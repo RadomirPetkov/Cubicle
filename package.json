@@ -1,0 +1,24 @@
+{
+  "name": "cubicle",
+  "version": "1.0.0",
+  "description": "Softuni JS back-end workshop",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RadomirPetkov/Cubicle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RadomirPetkov/Cubicle/issues"
+  },
+  "homepage": "https://github.com/RadomirPetkov/Cubicle#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}
