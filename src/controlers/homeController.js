@@ -1,7 +1,8 @@
-const cubes = require(`../db.json`)
+const cubeService = require(`../cubeService.js`)
 
 const homeController = (req, res) => {
-    res.render("./index", { cubes })
+    const [cubes, search, from, to] = cubeService.getAll(req.query)
+    res.render("./index", { cubes, search, from, to })
 }
 module.exports = homeController
 
