@@ -6,6 +6,7 @@ createRouter.get(`/create`, (req, res) => {
 })
 
 createRouter.post(`/create`, (req, res) => {
+    req.body.id = cubes[cubes.length - 1].id + 1
     cubes.push(req.body)
     res.redirect(`/`)
 })
