@@ -9,6 +9,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'src/views');
 
 app.use("/", express.static("static"))
+app.use(express.urlencoded({extended: false}))
 
 app.use(router)
 
