@@ -1,6 +1,7 @@
 const cubes = require(`./db.json`)
+const Cube = require('./models/Cube')
 
-
+exports.create = (data) => Cube.create(data)
 
 exports.getAll = (queryString) => {
     let { search, from, to } = queryString

@@ -1,14 +1,20 @@
 const createRouter = require('express').Router()
 const cubes = require(`../db.json`)
+const cubeService = require(`../cubeService`)
 
 createRouter.get(`/create`, (req, res) => {
     res.render(`create`)
 })
 
-createRouter.post(`/create`, (req, res) => {
-    req.body.id = cubes[cubes.length - 1].id + 1
-    cubes.push(req.body)
-    res.redirect(`/`)
+createRouter.post(`/create`, async (req, res) => {
+    const data = req.body
+    try {
+        await cubeService.create(data)
+        res.redirect(`/`)
+    }
+    catch (error) {
+        res.status(400).send(error)
+    }
 })
 
 module.exports = createRouter

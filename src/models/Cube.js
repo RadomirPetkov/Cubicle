@@ -10,11 +10,11 @@ const cubeSchema = new mongoose.Schema({
         required: true,
         maxlength: 120
     },
-    iamgeUrl: {
+    imageUrl: {
         type: String,
         required: true,
     },
-    dificultyLevel: {
+    difficultyLevel: {
         type: Number,
         required: true,
         min: 1,
