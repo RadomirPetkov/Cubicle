@@ -1,7 +1,8 @@
-const cubes = require(`../db.json`)
+const cubeService = require(`../cubeService`)
 
-const detailsController = (req, res) => {
-    const currentCube = cubes[req.params.id]
-    res.render(`details.hbs`, {currentCube})
+const detailsController = async (req, res) => {
+    const currentCube = await cubeService.getOneByID(req.params.id)
+    console.log(currentCube);
+    res.render(`details.hbs`, currentCube)
 }
 module.exports = detailsController

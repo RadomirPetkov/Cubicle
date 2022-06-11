@@ -1,5 +1,4 @@
 const createRouter = require('express').Router()
-const cubes = require(`../db.json`)
 const cubeService = require(`../cubeService`)
 
 createRouter.get(`/create`, (req, res) => {
