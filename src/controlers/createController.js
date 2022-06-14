@@ -21,9 +21,15 @@ cubeRouter.get(`/:id/attach-accessory`, async (req, res) => {
     const cubeId = req.params.id
     const currentCube = await cubeService.getOneByID(cubeId).lean()
     const accessories = await accessoryService.getAll().lean()
-    
-    console.log(accessories);
-    res.render(`./attachAccessory`, {currentCube, accessories})
+
+    res.render(`./attachAccessory`, { currentCube, accessories })
+})
+
+cubeRouter.post(`/:id/attach-accessory`, async (req, res) => {
+    const accessoryId = req.body.accessory
+    const cubeId = req.params.id
+    cubeService.attachAccessories(cubeId, accessoryId)
+    res.redirect(`/details/${cubeId}`)
 })
 
 module.exports = cubeRouter

@@ -1,5 +1,6 @@
 
 const Cube = require('./models/Cube')
+const Accessory = require(`./models/Accessory`)
 
 exports.create = (data) => Cube.create(data)
 
@@ -22,6 +23,16 @@ exports.getAll = async () => {
     // return [result, search, from, to]
 }
 
-exports.getOneByID =  (id) => {
+exports.getOneByID = (id) => {
     return Cube.findById(id)
+}
+
+exports.attachAccessories = async (cubeId, accessoryId) => {
+    const currentCube = await Cube.findById(cubeId)
+    const currentAccessory = await Accessory.findById(accessoryId)
+    currentCube.accessories.push(currentAccessory)
+    currentAccessory.cubes.push(currentCube)
+
+    await currentCube.save()
+    await currentAccessory.save()
 }
