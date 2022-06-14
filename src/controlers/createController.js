@@ -1,11 +1,11 @@
-const createRouter = require('express').Router()
+const createCubeRouter = require('express').Router()
 const cubeService = require(`../cubeService`)
 
-createRouter.get(`/create`, (req, res) => {
+createCubeRouter.get(`/create`, (req, res) => {
     res.render(`create`)
 })
 
-createRouter.post(`/create`, async (req, res) => {
+createCubeRouter.post(`/create`, async (req, res) => {
     const data = req.body
     try {
         await cubeService.create(data)
@@ -16,4 +16,4 @@ createRouter.post(`/create`, async (req, res) => {
     }
 })
 
-module.exports = createRouter
+module.exports = createCubeRouter
