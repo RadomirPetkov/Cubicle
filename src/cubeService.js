@@ -22,6 +22,6 @@ exports.getAll = async () => {
     // return [result, search, from, to]
 }
 
-exports.getOneByID = async (id) => {
-    return await Cube.findById(id)
+exports.getOneByID =  (id) => {
+    return Cube.findById(id)
 }

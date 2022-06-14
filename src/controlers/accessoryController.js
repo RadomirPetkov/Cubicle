@@ -1,5 +1,7 @@
 const accessoryRouter = require('express').Router()
 const Accessory = require(`../models/Accessory`)
+const accessoryService = require(`../accessoryService`)
+
 
 accessoryRouter.get(`/create`, (req, res) => {
     res.render(`createAccessory.hbs`)
@@ -7,7 +9,7 @@ accessoryRouter.get(`/create`, (req, res) => {
 
 accessoryRouter.post(`/create`, async (req, res) => {
     const data = req.body
-    await Accessory.create(data)
+    await accessoryService.create(data)
     res.redirect(`/`)
 })
 
