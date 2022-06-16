@@ -22,9 +22,16 @@ exports.getAll = async () => {
     //         && x.difficultyLevel <= to)
     // return [result, search, from, to]
 }
+exports.getAllPopulated = async () => {
+    let cubes = await Cube.find().populate()
+    return cubes
+}
 
 exports.getOneByID = (id) => {
     return Cube.findById(id)
+}
+exports.getOneByIDPopulated = (id, model) => {
+    return  Cube.findById(id).populate(model)
 }
 
 exports.attachAccessories = async (cubeId, accessoryId) => {

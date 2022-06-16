@@ -1,10 +1,27 @@
 <main>
-  <h1>{{name}}</h1>
-  <img class="cube" src="{{imageUrl}}">
+  <h1>{{currentCube.name}}</h1>
+  <img class="cube" src="{{currentCube.imageUrl}}">
   <div class="details">
-    <p><span>Description:</span> {{description}}</p>
-    <p><span>Difficulty level:</span> {{difficultyLevel}}</p>
+    <p><span>Description:</span> {{currentCube.description}}</p>
+    <p><span>Difficulty level:</span> {{currentCube.difficultyLevel}}</p>
     <a class="btn" href="/">Back</a>
-    <a class="btn" href="/cube/{{_id}}/attach-accessory">Attach accessory</a>
+    <a class="btn" href="/cube/{{currentCube._id}}/attach-accessory">Attach accessory</a>
   </div>
+  <h2>Accessories</h2>
+
+  <div class="accessories">
+    {{#if currentCube.accessories}}
+    {{#each currentCube.accessories}}
+    <div class="accessory">
+      <img src="{{imageUrl}}" alt="stickerName">
+      <h3>{{name}}</h3>
+      <p>{{description}}</p>
+    </div>
+    {{/each}}
+    {{else}}
+  </div>
+  <h3 class="italic">This cube has no accessories yet...</h3>
+  </div>
+  {{/if}}
+
 </main>
