@@ -1,4 +1,3 @@
-
 const Cube = require('../models/Cube')
 const Accessory = require(`../models/Accessory`)
 
@@ -43,3 +42,4 @@ exports.attachAccessories = async (cubeId, accessoryId) => {
     await currentCube.save()
     await currentAccessory.save()
 }
+
