@@ -16,6 +16,9 @@ exports.login = async ({ username, password }) => {
 
     }
     const isAuth = await bcrypt.compare(password, user.password)
-    return isAuth
+    if(isAuth){
+        return user
+    }
+    return;
 
 }

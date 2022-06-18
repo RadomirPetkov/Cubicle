@@ -26,8 +26,9 @@ userRouter.post(`/register`, async (req, res) => {
 
 userRouter.post(`/login`,async (req, res) => {
     const userData = req.body
-    const isUser = await userService.login(userData)
-    if (isUser) {
+    const user = await userService.login(userData)
+    if (user) {
+        res.cookie(`session`, user)
         res.redirect(`/`)
     }
     else {
