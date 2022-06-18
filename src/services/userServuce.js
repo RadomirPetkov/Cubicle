@@ -8,3 +8,14 @@ exports.register = async (username, passwod) => {
     await User.create({ username, password: hasedPassword })
 
 }
+
+exports.login = async ({ username, password }) => {
+    const user = await User.findOne({ username })
+    if (!user) {
+        return user
+
+    }
+    const isAuth = await bcrypt.compare(password, user.password)
+    return isAuth
+
+}

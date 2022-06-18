@@ -24,5 +24,17 @@ userRouter.post(`/register`, async (req, res) => {
     }
 })
 
+userRouter.post(`/login`,async (req, res) => {
+    const userData = req.body
+    const isUser = await userService.login(userData)
+    if (isUser) {
+        res.redirect(`/`)
+    }
+    else {
+        res.send(`Invalid user`)
+    }
+
+})
+
 
 module.exports = userRouter
