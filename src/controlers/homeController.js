@@ -1,4 +1,4 @@
-const cubeService = require(`../cubeService.js`)
+const cubeService = require(`../services/cubeService`)
 
 const homeController = async (req, res) => {
 const cubes = await cubeService.getAll(req.query)

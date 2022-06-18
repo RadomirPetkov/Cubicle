@@ -1,6 +1,6 @@
 const cubeRouter = require('express').Router()
-const cubeService = require(`../cubeService`)
-const accessoryService = require(`../accessoryService`)
+const cubeService = require(`../services/cubeService`)
+const accessoryService = require(`../services/accessoryService`)
 
 cubeRouter.get(`/create`, (req, res) => {
     res.render(`create`)
