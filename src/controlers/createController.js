@@ -1,13 +1,16 @@
 const cubeRouter = require('express').Router()
 const cubeService = require(`../services/cubeService`)
 const accessoryService = require(`../services/accessoryService`)
+const {isGuest} = require(`../middlewares/authMiddleware`)
 
-cubeRouter.get(`/create`, (req, res) => {
+cubeRouter.get(`/create`, isGuest, (req, res) => {
     res.render(`create`)
 })
 
-cubeRouter.post(`/create`, async (req, res) => {
+cubeRouter.post(`/create`, isGuest, async (req, res) => {
     const data = req.body
+    data.owner = req.user.user._id
+    
     try {
         await cubeService.create(data)
         res.redirect(`/`)

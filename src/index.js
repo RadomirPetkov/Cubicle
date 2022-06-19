@@ -1,14 +1,17 @@
 const express = require(`express`)
-
+const cookieParser = require(`cookie-parser`)
 const router = require(`./router`)
 const app = express()
 const { initializeDatabase } = require(`./config/database`)
 const port = 5000
 require(`./config/handlebars`)(app)
+const {auth} = require(`./middlewares/authMiddleware`)
 
 
 app.use("/", express.static("static"))
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(auth)
 app.use(router)
 
 initializeDatabase()

@@ -14,6 +14,7 @@ router.use(`/cube`, createController)
 router.use(`/accesory`, accessoryRouter)
 router.use(`/user`, userRouter)
 router.get(`/about`, aboutController)
+router.get(`/404`, (req, res)=>{res.render(`404`)})
 
 
 module.exports = router
