@@ -1,7 +1,7 @@
 const cubeRouter = require('express').Router()
 const cubeService = require(`../services/cubeService`)
 const accessoryService = require(`../services/accessoryService`)
-const {isGuest} = require(`../middlewares/authMiddleware`)
+const { isGuest } = require(`../middlewares/authMiddleware`)
 
 cubeRouter.get(`/create`, isGuest, (req, res) => {
     res.render(`create`)
@@ -10,7 +10,7 @@ cubeRouter.get(`/create`, isGuest, (req, res) => {
 cubeRouter.post(`/create`, isGuest, async (req, res) => {
     const data = req.body
     data.owner = req.user.user._id
-    
+
     try {
         await cubeService.create(data)
         res.redirect(`/`)
@@ -33,6 +33,11 @@ cubeRouter.post(`/:id/attach-accessory`, async (req, res) => {
     const cubeId = req.params.id
     cubeService.attachAccessories(cubeId, accessoryId)
     res.redirect(`/details/${cubeId}`)
+})
+
+cubeRouter.get(`/delete/:cubeId`, async (req, res) => {
+    const cube = await cubeService.findByIdAndDelete(req.params.cubeId)
+    res.redirect(`/`)
 })
 
 module.exports = cubeRouter

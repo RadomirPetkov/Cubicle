@@ -30,7 +30,7 @@ exports.getOneByID = (id) => {
     return Cube.findById(id)
 }
 exports.getOneByIDPopulated = (id, model) => {
-    return  Cube.findById(id).populate(model)
+    return Cube.findById(id).populate(model)
 }
 
 exports.attachAccessories = async (cubeId, accessoryId) => {
@@ -43,3 +43,4 @@ exports.attachAccessories = async (cubeId, accessoryId) => {
     await currentAccessory.save()
 }
 
+exports.findByIdAndDelete = (cubeId) => Cube.findByIdAndDelete(cubeId)
