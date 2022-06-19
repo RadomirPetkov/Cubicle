@@ -1,5 +1,5 @@
 const userRouter = require(`express`).Router()
-const userService = require(`../services/userServuce`)
+const userService = require(`../services/userService`)
 
 userRouter.get(`/login`, (req, res) => {
     res.render(`loginPage`)

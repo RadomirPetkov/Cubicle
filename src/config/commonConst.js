@@ -1,0 +1,1 @@
+exports.jwtPrivateKey = `kgladmflamoem1r13`
