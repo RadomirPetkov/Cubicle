@@ -23,6 +23,13 @@ exports.auth = async (req, res, next) => {
 exports.isGuest = (req, res, next)=>{
     if(req.user == "Guest"){
         res.redirect(`/404`)
+    } 
+    next()
+}
+
+exports.isUser = (req, res, next)=>{
+    if(req.user != "Guest"){
+        res.locals.user = req.user
     }
     next()
 }

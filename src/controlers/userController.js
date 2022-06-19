@@ -24,7 +24,7 @@ userRouter.post(`/register`, async (req, res) => {
     }
 })
 
-userRouter.post(`/login`,async (req, res) => {
+userRouter.post(`/login`, async (req, res) => {
     const userData = req.body
     const user = await userService.login(userData)
     if (user) {
@@ -35,6 +35,10 @@ userRouter.post(`/login`,async (req, res) => {
         res.send(`Invalid user`)
     }
 
+})
+userRouter.get(`/logout`, (req, res) => {
+    res.clearCookie(`session`)
+    res.redirect(`/`)
 })
 
 
